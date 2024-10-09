@@ -1,0 +1,27 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+	<title>exam-multiple-choice-svg</title>
+	<defs>
+		<image  width="32" height="40" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAoAQMAAACl52raAAAAAXNSR0IB2cksfwAAAAZQTFRFMzMz////Iyh/xwAAAAJ0Uk5TAP9bkSK1AAAALUlEQVR4nGOsb2D4z/ifgYGB8YMAAz/jAwUGdsYDDgzMg5kAOxLsXLDDQV4AANzfKq/t3Q6oAAAAAElFTkSuQmCC"/>
+		<image  width="14" height="2" id="img2" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAACAQMAAABSRH/pAAAAAXNSR0IB2cksfwAAAANQTFRF////p8QbyAAAAA5JREFUeJxjZGBgZGAAAAAPAAOnzr4xAAAAAElFTkSuQmCC"/>
+		<image  width="14" height="2" id="img3" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAACAQMAAABSRH/pAAAAAXNSR0IB2cksfwAAAANQTFRF////p8QbyAAAAA5JREFUeJxjZGBgZGAAAAAPAAOnzr4xAAAAAElFTkSuQmCC"/>
+		<image  width="14" height="2" id="img4" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAACAQMAAABSRH/pAAAAAXNSR0IB2cksfwAAAANQTFRF////p8QbyAAAAA5JREFUeJxjZGBgZGAAAAAPAAOnzr4xAAAAAElFTkSuQmCC"/>
+		<image  width="14" height="2" id="img5" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAACAQMAAABSRH/pAAAAAXNSR0IB2cksfwAAAANQTFRF////p8QbyAAAAA5JREFUeJxjZGBgZGAAAAAPAAOnzr4xAAAAAElFTkSuQmCC"/>
+		<image  width="7" height="7" id="img6" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHAQMAAAD+nMWQAAAAAXNSR0IB2cksfwAAAAZQTFRF////MzMzOFSMkQAAAAJ0Uk5T/wDltzBKAAAAEUlEQVR4nGNkYGRgtABDIAsABN4AsBvIcNYAAAAASUVORK5CYII="/>
+		<image  width="8" height="7" id="img7" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAHAQMAAAAPl54dAAAAAXNSR0IB2cksfwAAAAZQTFRFMzMz////Iyh/xwAAAAJ0Uk5TAP9bkSK1AAAAFklEQVR4nGNkZ+Rn/M/4j/EPYwWjAQAXswO/xA+W3gAAAABJRU5ErkJggg=="/>
+		<image  width="6" height="22" id="img8" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAWAQMAAADZ1H+QAAAAAXNSR0IB2cksfwAAAAZQTFRF////MzMzOFSMkQAAAAJ0Uk5T/wDltzBKAAAAFUlEQVR4nGNkYGRgNCAAQWpaGM8AAEx+BGcCUsHAAAAAAElFTkSuQmCC"/>
+		<image  width="6" height="6" id="img9" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGAQMAAADaAn0LAAAAAXNSR0IB2cksfwAAAAZQTFRF////MzMzOFSMkQAAAAJ0Uk5T/wDltzBKAAAAEUlEQVR4nGNkYGRgNABCIA0AAnYAZw2JjicAAAAASUVORK5CYII="/>
+	</defs>
+	<style>
+	</style>
+	<g>
+		<use  href="#img1" x="4" y="4"/>
+		<use  href="#img2" x="18" y="12"/>
+		<use  href="#img3" x="18" y="16"/>
+		<use  href="#img4" x="18" y="24"/>
+		<use  href="#img5" x="18" y="28"/>
+		<use  href="#img6" x="8" y="24"/>
+		<use  href="#img7" x="8" y="12"/>
+		<use  href="#img8" x="38" y="22"/>
+		<use  href="#img9" x="38" y="15"/>
+	</g>
+</svg>
