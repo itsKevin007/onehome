@@ -36,18 +36,20 @@ $self = WEB_ROOT . 'index.php';
 
 
 	<body data-spy="scroll" data-target="#navbar" data-offset="60">
-
-		<!-- header -->
-		<?php include ($_SERVER["DOCUMENT_ROOT"] . '/' . $sett_data['directory'] . '/include/header.php'); ?>
-		<!-- /header -->
-
-		<?php
+	<?php
 		if (isset($_GET['mail'])) {
 			$pageId1 = $_GET['mail'];
 		} else {
 			$pageId1 = '';
 		}
 ?>
+<style>
+	@media (max-width: 600px) {
+		.loader{
+			margin-right: 47.5%;
+		}
+	}
+</style>
 		<div id='preloader' >
             <div class='loader'>
 				<?php 
@@ -68,6 +70,10 @@ $self = WEB_ROOT . 'index.php';
                 
             </div>
         </div><!-- Preloader -->
+
+		<!-- header -->
+		<?php include ($_SERVER["DOCUMENT_ROOT"] . '/' . $sett_data['directory'] . '/include/header.php'); ?>
+		<!-- /header -->
         <!-- Content -->
         <?php require_once $content; ?>
         <!-- /Content -->

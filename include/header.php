@@ -4,23 +4,22 @@ if (!defined('WEB_ROOT')) {
 	exit;
 }
 
-if (preg_match('/(android|iphone|ipad|ipod|blackberry|iemobile|opera mini)/i', $_SERVER['HTTP_USER_AGENT'])) {
-    // If mobile, execute this
-    $icon = '<a href="' . WEB_ROOT . '" class="brand logo-dark"><img src="' . WEB_ROOT . 'img/icons/silverlogoh.png" style="width: clamp(150px, 15%, 100px);"></a>';
-    $icons = '';
-} else {
-    // If not mobile, execute this
-    $icon = '';
-    $icons = '<a href="' . WEB_ROOT . '" class="brand logo-dark"><img src="' . WEB_ROOT . 'img/icons/silverlogoh.png" style="width: clamp(150px, 15%, 100px);"></a>';
-}
+// if (preg_match('/(android|iphone|ipad|ipod|blackberry|iemobile|opera mini)/i', $_SERVER['HTTP_USER_AGENT'])) {
+//     // If mobile, execute this
+//     $icon = '<a href="' . WEB_ROOT . '" class="brand logo-dark"><img src="' . WEB_ROOT . 'img/icons/silverlogoh.png" style="width: clamp(150px, 15%, 100px);"></a>';
+//     $icons = '';
+// } else {
+//     // If not mobile, execute this
+//     $icon = '';
+//     $icons = '<a href="' . WEB_ROOT . '" class="brand logo-dark"><img src="' . WEB_ROOT . 'img/icons/silverlogoh.png" style="width: clamp(150px, 15%, 100px);"></a>';
+// }
 
 
 ?>
 
 <header id="header" class="header_section">
 	<nav class="navbar">
-		<div class="container"><br>
-
+		<div class="container">
 			<a href="<?php echo WEB_ROOT;  ?>" class="brand logo-dark"><img src="<?php echo WEB_ROOT;  ?>img/icons/silverlogoh.png" style="width: clamp(150px, 15%, 100px);"></a>
 			
 			<!-- <div id="navbar" class="collapse navbar-collapse navbar-right">
@@ -34,5 +33,5 @@ if (preg_match('/(android|iphone|ipad|ipod|blackberry|iemobile|opera mini)/i', $
 			<!--/.navbar-collapse -->
 			
 		</div>
-	</nav><!-- Navigation Bar --><br>
+	</nav><!-- Navigation Bar -->
 </header> <!-- Header -->
