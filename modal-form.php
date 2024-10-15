@@ -1,70 +1,92 @@
 <div id="myModal" class="modal">
         <div class="modal-content" >
-        <span class="close">&times;</span>
-            <div class="borders">
+                <span class="close">&times;</span>
+            <div class="borders mt-3">
                 
-                <div class="modal-header">
-                    <div class="row">
-                        
-                            <img src="images/icons/bluelogoh.png" alt="One Home Solutions">
-                    
-                            <h2>Client Information</h2>
-                        
-                    </div>
-                </div>
-
                 <div class="modal-body" >
 
-                        <form>
+                    <form class="needs-validation" novalidate method="post" action="process-client.php" enctype="multipart/form-data" name="form" id="form">			
+                            
+                            <div class="row mb-4">
+                                <div class="col-12 col-sm-4 mb-3">
+                                    <img src="images/icons/bluelogoh.png" alt="One Home Solutions" style="width:100%; height:auto;">
+                                </div>
+                                <div class="col-12 col-sm-8 text-center text-sm-right">
+                                    <h2 style="color:#022C5C;"><b>Client Information</b></h2>
+                                </div>
+                            </div>
                             <div class="row">
-                                <div class="col-lg-3">
+                                <div class="col-12 col-sm-3">
                                     <div class="form-group">
-                                        <label for="fname">First Name:</label>
-                                        <input type="text" id="fname" name="fname" placeholder="Enter Your First Name">
+                                        <label class="form-label" for="firstname">First Name:</label>
+                                        <input type="text" id="firstname" name="firstname" placeholder="Enter Your First Name">
                                     </div>
                                 </div>
-                                <div class="col-lg-3">
+                                <div class="col-12 col-sm-3">
                                     <div class="form-group">
-                                        <label for="mname">Middle Name:</label>
-                                        <input type="text" id="mname" name="mname" placeholder="Enter Your Last Name">
+                                        <label for="middlename">Middle Name:</label>
+                                        <input type="text" id="middlename" name="middlename" placeholder="Enter Your Last Name">
                                     </div>
                                 </div>
-                                <div class="col-lg-3">
+                                <div class="col-12 col-sm-3">
                                     <div class="form-group">
-                                        <label for="lname">Last Name:</label>
-                                        <input type="text" id="lname" name="lname" placeholder="Enter Your Last Name">
+                                        <label for="lastname">Last Name:</label>
+                                        <input type="text" id="lastname" name="lastname" placeholder="Enter Your Last Name">
                                     </div>
                                 </div>
-                                <div class="col-lg-3">
+                                <div class="col-12 col-sm-3">
                                     <div class="form-group">
-                                        <label for="contact">Suffix:</label>
-                                        <input type="text" id="contact" name="contact" placeholder="Ex: Sr./ Jr.">
+                                        <label for="suffix">Suffix:</label>
+                                        <input type="text" id="suffix" name="suffix" placeholder="Ex: Sr./ Jr.">
                                     </div>
                                 </div>
 
                             </div>
-                            <div class="row">
+                            <div class="row mb-3">
                                 <div class="col-lg-3">
                                     <div class="form-group">
-                                        <label for="national">Nationality:</label>
-                                        <input type="text" id="national" name="national" placeholder="Enter Your Nationality">
+                                        <label for="nationality">Nationality:</label>
+                                        <input type="text" id="nationality" name="nationality" placeholder="Enter Your Nationality">
                                     </div>
                                 </div>
-                                <div class="col-lg-3">
-                                    <div class="form-group">
-                                        <label for="age">Age:</label>
-                                        <input type="number" id="age" name="age" placeholder="Enter Your Age">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
+                                <div class="col-6 col-lg-6">
                                     <div class="form-group">
                                         <label for="birth">Date of Birth:</label>
-                                        <input type="date" id="birth" name="birth" >
+                                        <input type="date" id="birth" name="birth" onchange="calculateAge()">
+                                    </div>
+                                </div>
+                                <div class="col-6 col-lg-3">
+                                    <div class="form-group">
+                                        <label for="age">Age:</label>
+                                        <input type="number" id="age" name="age" placeholder="Enter Your Age" readonly>
                                     </div>
                                 </div>
 
+                                <script>
+                                    function calculateAge() {
+                                        const birthDateInput = document.getElementById('birth').value;
+                                        const ageInput = document.getElementById('age');
+
+                                        if (birthDateInput && birthDateInput.length === 10) { // Ensure date is fully entered in the format YYYY-MM-DD
+                                            const birthDate = new Date(birthDateInput);
+                                            const today = new Date();
+                                            let age = today.getFullYear() - birthDate.getFullYear();
+                                            const monthDifference = today.getMonth() - birthDate.getMonth();
+
+                                            // Adjust age if the current date is before the birthday in the current year
+                                            if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
+                                                age--;
+                                            }
+
+                                            ageInput.value = age; // Set the calculated age in the input field
+                                        } else {
+                                            ageInput.value = ''; // Clear the age field if no birth date is selected or incomplete
+                                        }
+                                    }
+                                </script>
+
                             </div>
-                            <div class="row">
+                            <div class="row mb-1">
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="govid">Type of Government ID:</label>
@@ -79,35 +101,35 @@
                                 </div>
 
                             </div>
-                            <div class="row">
-                                <div class="col-lg-3">
+                            <div class="row mb-2">
+                                <div class="col-12 col-lg-6">
                                     <div class="form-group">
                                         <label for="gender">Gender:</label>
                                         <div class="radio-group">
-                                            <div class="row"><div> <label>Male:</label></div><div><input type="radio" name="gender" value="0"></div></div>
-                                            <div class="row"><div> <label>Female:</label></div><div><input type="radio" name="gender" value="1"></div></div>
+                                            <div class="row"><div> <label>Male:</label></div><div><input type="radio" name="gender" value="Male"></div></div>
+                                            <div class="row"><div> <label>Female:</label></div><div><input type="radio" name="gender" value="Female"></div></div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-9">
+                                <div class="col-12 col-lg-6">
                                     <div class="form-group">
-                                    <label for="gender">Civil Status:</label>
-                                        <div class="radio-group">
-                                            <div class="row"><div> <label for="single">Single:</label></div><div><input id="single" type="radio" name="civil" value="0"></div></div>
-                                            <div class="row"><div> <label for="married">Married:</label></div><div><input id="married" type="radio" name="civil" value="1"></div></div>
-                                            <div class="row"><div> <label for="parent">Single Parent:</label></div><div><input id="parent" type="radio" name="civil" value="2"></div></div>
-                                            <div class="row"><div> <label for="divorced">Seperated/Divorced:</label></div><div><input id="divorced" type="radio" name="civil" value="3"></div></div>
-                                            <div class="row"><div> <label for="widowed">Widowed:</label></div><div><input id="widowed" type="radio" name="civil" value="5"></div></div>
-                                        </div>
+                                        <label for="civilStatus">Civil Status:</label>
+                                        <select id="civilStatus" name="civil" class="form-control">
+                                            <option value="" selected disabled>Choose Civil Status</option>
+                                            <option value="Single">Single</option>
+                                            <option value="Married">Married</option>
+                                            <option value="Single Parent">Single Parent</option>
+                                            <option value="Separated/Divorced">Separated/Divorced</option>
+                                            <option value="Widowed">Widowed</option>
+                                        </select>
                                     </div>
                                 </div>
-
                             </div>
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label for="govid">Email Address:</label>
-                                        <input type="email" id="govid" name="govid" placeholder="Enter Your Email">
+                                        <label for="emailadd">Email Address:</label>
+                                        <input type="email" id="emailadd" name="emailadd" placeholder="Enter Your Email" required>
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
@@ -117,8 +139,8 @@
                                     </div>
                                 </div>
                             </div>
-							<label for="bankdetails">Complete Address:</label>                           
-                            <div class="row">
+							<label for="bankdetails" class="text-center">Complete Address:</label>                           
+                            <div class="row mb-2">
                                 <div class="col-lg-3">
                                     <div class="form-group">
                                         <label for="region">Region:</label>
@@ -152,8 +174,8 @@
                             <div class="row">
                                 <div class="col-lg-4">
                                     <div class="form-group">
-                                        <label for="contact">Zip Code:</label>
-                                        <input type="text" id="contact" name="contact" placeholder="Enter Your Zip Code.">
+                                        <label for="zipcode">Zip Code:</label>
+                                        <input type="text" id="zipcode" name="zipcode" placeholder="Enter Your Zip Code.">
                                     </div>
                                 </div> 
                                 <div class="col-lg-4">
@@ -190,8 +212,8 @@
                                 </div>
                                 <div class="col-lg-3">
                                     <div class="form-group">
-                                        <label for="bandl">Block and Lot:</label>
-                                        <input type="text" id="bandl" name="bandl" placeholder="Enter Your Block and Lot.">
+                                        <label for="blocklot">Block and Lot:</label>
+                                        <input type="text" id="blocklot" name="blocklot" placeholder="Enter Your Block and Lot.">
                                     </div>
                                 </div>
                             </div>
@@ -200,23 +222,25 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="form-group">
-                                        <label for="gender">Type of Membership:</label>
-                                        <div class="radio-group">
-                                            <div class="row"><div><label>Platinum:</label></div><div><input type="radio" name="type" value="0"></div></div>
-                                            <div class="row"><div><label>Basic:</label></div><div><input type="radio" name="type" value="1"></div></div>
-                                            <div class="row"><div><label>Platinum Commercial:</label></div><div><input type="radio" name="type" value="2"></div></div>
-                                            <div class="row"><div><label>Basic Commercial:</label></div><div><input type="radio" name="type" value="3"></div></div>
-                                        </div>
+                                        <label for="membershipType">Type of Membership:</label>
+                                        <select id="membershipType" name="membership" class="form-control">
+                                            <option value="" selected disabled>Choose Type of Membership</option>
+                                            <option value="Platinum">Platinum</option>
+                                            <option value="Basic">Basic</option>
+                                            <option value="Platinum Commercial">Platinum Commercial</option>
+                                            <option value="Basic Commercial">Basic Commercial</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
+
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="gender">Form of Payment:</label>
                                         <div class="radio-group">
-                                            <div class="row"><div><label>Cash:</label></div><div><input type="radio" name="payment" value="0"></div></div>
-                                            <div class="row"><div><label>Check:</label></div><div><input type="radio" name="payment" value="1"></div></div>
+                                            <div class="row"><div><label>Cash:</label></div><div><input type="radio" name="payment" value="cash"></div></div>
+                                            <div class="row"><div><label>Check:</label></div><div><input type="radio" name="payment" value="check"></div></div>
                                         </div>
                                     </div>
                                 </div>
@@ -227,7 +251,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <label for="bankdetails">Bank Details (if paid through check):</label>
+                            <label for="bankdetails" class="text-center">Bank Details (if paid through check):</label>
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
@@ -245,25 +269,25 @@
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label for="check">Check No.:</label>
-                                        <input type="text" id="check" name="check" placeholder="Enter the Check No.">
+                                        <label for="checknum">Check No.:</label>
+                                        <input type="text" id="checknum" name="checknum" placeholder="Enter the Check No.">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label for="branch">Account No.:</label>
-                                        <input type="text" id="acc" name="branch" placeholder="Enter the Account No.">
+                                        <label for="accnum">Account No.:</label>
+                                        <input type="text" id="accnum" name="accnum" placeholder="Enter the Account No.">
                                     </div>
                                 </div>
                             </div>
                             
                             <div class="row">
-                                <div class="col-lg-6">
+                                <div class="col-lg-12">
                                     <div class="form-group">
                                         <label for="gender">With Proof of Billing:</label>
                                         <div class="radio-group">
-                                            <div class="row"><div><label>Yes:</label></div><div><input type="radio" name="payment" value="1"></div></div>
-                                            <div class="row"><div><label>No:</label></div><div><input type="radio" name="payment" value="0"></div></div>
+                                            <div class="row"><div><label>Yes:</label></div><div><input type="radio" name="billing" value="Yes"></div></div>
+                                            <div class="row"><div><label>No:</label></div><div><input type="radio" name="billing" value="No"></div></div>
                                         </div>
                                     </div>
                                 </div>
@@ -275,14 +299,14 @@
 									<div class="col-lg-3">
 										<div class="form-group">
 											<div class="radio-group">
-												<div class="row"><div><label>Yes:</label></div><div><input type="radio" name="payment" value="0"></div></div>                                            
+												<div class="row"><div><label>Yes:</label></div><div><input type="radio" name="gateperimeter" value="Yes"></div></div>                                            
 											</div>
 										</div>
 									</div>
 									<div class="col-lg-3">
 										<div class="form-group">
 											<div class="radio-group">
-												<div class="row"><div><label>No:</label></div><div><input type="radio" name="payment" value="1"></div></div>
+												<div class="row"><div><label>No:</label></div><div><input type="radio" name="gateperimeter" value="No"></div></div>
 											</div>
 										</div>
 									</div>
@@ -293,7 +317,7 @@
 							<b class="acc-holder">Client</b><br>  
 							<b class="acc-holder">WAIVER OF LIABILITY AND HOLD HARMLESS AGREEMENT</b><br><br>
 							<p>This Waiver of Liability and Hold Harmless Agreement is made and entered into by and between the undersigned</p>
-							<div class="form-group"><input type="text" id="check" name="check" placeholder="Enter the name."></div>
+							<div class="form-group"><input type="text" id="waiver" name="waiver" placeholder="Enter the name."></div>
 							<p>and One Home Solutions (OHS).</p><br>
 							<p>1. Acknowledgment of Services Provided</p>
 							<p>The Client acknowledges that OHS is a platform that connects clients with independent third-party contractors
@@ -342,16 +366,144 @@
 
 							<div class="form-group">
 								<div class="radio-group">
-									<div class="row"><div><input type="checkbox" name="payment" value="0">:</div><div>&nbsp;<b class="acc-holder">If you check this box, you hereby agree to the terms and conditions.:</b></div></div>                                            
+									<div class="row"><div><input type="checkbox" name="agree" value="agree">:</div><div>&nbsp;<b class="acc-holder">If you check this box, you hereby agree to the terms and conditions.:</b></div></div>                                            
 								</div>
 							</div>
 
 							<hr>
-							<div class="col-lg-12"><br><br>
+							<!-- <div class="col-lg-12"><br><br>
 								<b style="float: right; font-size: 12px"> Property Location Sketch</b>
-							</div>
-                        </form>
+							</div> -->
+                            <div class="row">
+                                <div class="col-12 col-sm-4 mb-3">
+                                    <img src="images/icons/bluelogoh.png" alt="One Home Solutions" style="width:100%; height:auto;">
+                                </div>
+                                <div class="col-12 col-sm-8 text-center text-sm-right">
+                                    <h2 style="color:#022C5C;"><b>Property Location Pin</b></h2>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <input type="hidden" class="form-control form-control-sm" id="long" name="long" autocomplete="off" />
+                                <input type="hidden" class="form-control form-control-sm" id="lat" name="lat"  autocomplete="off"/>
+                                <div class="col-12">
+                                    <div id="map" style="height: 400px; width: 100%;border-radius:15px;"></div> <!-- Adjust height as needed -->
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-12 col-sm-12">
+                                    <button type="submit" class="btn btn-lg btn-primary" style="width:100%;height:40px;background-color:#022C5C;border:1px #022C5C solid;color:white;border-radius:15px;">Submit Form</button>
+                                </div>
+                            </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+
+    <link rel="stylesheet" href="<?php echo WEB_ROOT;?>libraries/leaflet/leaflet.css" />
+<script src="<?php echo WEB_ROOT;?>libraries/leaflet/leaflet.js"></script>
+
+<script>
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("openModalBtn");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // Initialize the map variable
+    var map;
+    var marker;
+    var currentLocation; // To store the current location
+
+    // Function to initialize the map
+    function initMap() {
+        // Default location (Bacolod City)
+        var defaultLocation = [10.6462477, 122.9193268];
+
+        // Initialize the map
+        map = L.map('map').setView(defaultLocation, 15); // Set the default view
+
+        // Add OpenStreetMap tile layer
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://tridentechnology.com/">Trident Technology</a>'
+        }).addTo(map);
+
+        // Initialize a marker at the default position
+        marker = L.marker(defaultLocation, { draggable: true }).addTo(map);
+
+        // Get the user's current location
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                var lat = position.coords.latitude;
+                var lng = position.coords.longitude;
+
+                // Set the map view to the user's current location
+                currentLocation = [lat, lng]; // Store the current location
+                map.setView(currentLocation, 13); // Zoom level can be adjusted
+
+                // Move the marker to the user's current location
+                marker.setLatLng(currentLocation);
+
+                // Update the lat and long input fields
+                document.getElementById('lat').value = lat.toFixed(6);
+                document.getElementById('long').value = lng.toFixed(6);
+            }, function() {
+                // If geolocation fails, keep the default location
+                alert("Geolocation service failed. Using default location.");
+                currentLocation = defaultLocation; // Use the default location
+            });
+        } else {
+            alert("Geolocation is not supported by this browser.");
+            currentLocation = defaultLocation; // Use the default location
+        }
+
+        // Update the marker and input fields on map click
+        map.on('click', function(e) {
+            var lat = e.latlng.lat;
+            var lng = e.latlng.lng;
+
+            // Move the marker to the clicked location
+            marker.setLatLng(e.latlng);
+
+            // Set the map view to the clicked location
+            map.setView(e.latlng, map.getZoom()); // Keep the current zoom level
+
+            // Update the lat and long input fields
+            document.getElementById('lat').value = lat.toFixed(6);
+            document.getElementById('long').value = lng.toFixed(6);
+        });
+
+        // Update lat/lng inputs if the marker is dragged
+        marker.on('dragend', function(e) {
+            var position = marker.getLatLng();
+            map.setView(position, map.getZoom()); // Center the map on the new marker position with current zoom level
+            document.getElementById('lat').value = position.lat.toFixed(6);
+            document.getElementById('long').value = position.lng.toFixed(6);
+        });
+    }
+
+    // When the user clicks the button, open the modal
+    btn.onclick = function() {
+        modal.style.display = "block";
+        initMap(); // Initialize the map when opening the modal
+        if (map) {
+            map.invalidateSize(); // Fix rendering issues in modal
+        }
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
