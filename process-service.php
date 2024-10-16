@@ -173,17 +173,27 @@
 		}
 		
 		
-
 		$affiliates = isset($_POST['affiliate']) ? $_POST['affiliate'] : [];
-
 		foreach ($affiliates as $affiliate) {
-	
+			$sql = "INSERT INTO tbl_affiliate (id, affiliate) VALUES (?, ?)";
+			if ($stmt = $conn->prepare($sql)) {
+				$stmt->bind_param("is", $id, $affiliate);
+				$stmt->execute();
+				$stmt->close();
+			}
 		}
+		
+
 	
 		$aandrs = isset($_POST['aandr']) ? $_POST['aandr'] : [];
 	
 		foreach ($aandrs as $aandr) {
-	
+            $sql = "INSERT INTO tbl_aandrs (id, aandrs) VALUES (?, ?)";
+			if ($stmt = $conn->prepare($sql)) {
+				$stmt->bind_param("is", $id, $aandrs);
+				$stmt->execute();
+				$stmt->close();
+			}
 		}
 
 		$geographs = isset($_POST['geograph']) ? $_POST['geograph'] : [];
