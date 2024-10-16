@@ -110,20 +110,69 @@
 
 	$bankref = isset($_POST['bankref']) ? $_POST['bankref'] : [];
 
+    
+    
+    $sql = "INSERT INTO tbl_service (sp_type, fname, mname, lname, suffix, contact_person_name, contact_person_position, 
+                        tin, dti, mayors_permit, cor, assess, kmmain, credref, bank, branch, accname, accno, liabilityin, 
+                        liabilityinno, compenin, compeninno, indemin, indeminno, liability, agree, membership, chequeno, 
+                        gcashref, bankref, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), NOW())";
+    
+    if ($stmt = $conn->prepare($sql)) {
+        $stmt->bind_param("sssssssssssssssssssssssssssssss", $sp_type, $fname, $mname, $lname, $suffix, $contact_person_name, $contact_person_position, $tin, $dti, $mayors_permit, $cor, $assess, $kmmain, $credref, $bank, $branch, $accname, $accno, $liabilityin, $liabilityinno, $compenin, $compeninno, $indemin, $indeminno, $liability, $agree, $membership, $chequeno, $gcashref, $bankref);
+        $stmt->execute();
+        $stmt->close();
+    }
+    
+    $id = $conn->lastInsertId();
+    $uid = md5($id);
+
+    
+    $sql = "UPDATE tbl_service SET uid = ? WHERE sid = ?";
+    
+    if ($stmt = $conn->prepare($sql)) {
+        $stmt->bind_param("si", $uid, $id);
+        $stmt->execute();
+        $stmt->close();
+    }
+
 
 		// Retrieve selected professions (checkboxes)
 		$professions = isset($_POST['profess']) ? $_POST['profess'] : [];
 
 		foreach ($professions as $profession) {
-	
+            $sql = "INSERT INTO tbl_profession (service_id, prof_type) VALUES (?, ?)";
+            if ($stmt = $conn->prepare($sql)) {
+                $stmt->bind_param("ii", $id, $profession);
+                $stmt->execute();
+                $stmt->close();
+            }
+            
 		}
 	
 		// Retrieve technical roles (input fields)
 		$technical_roles = isset($_POST['techrole']) ? $_POST['techrole'] : [];
 	
 		foreach ($technical_roles as $technical_role) {
-	
+            $sql = "INSERT INTO tbl_service (role1, role2, role3) VALUES (?, ?, ?)";
+            if ($stmt = $conn->prepare($sql)) {
+                $stmt->bind_param("ii", $id, $technical_role);
+                $stmt->execute();
+                $stmt->close();
+            }
 		}
+
+		
+		// Retrieve PRC ID
+		$prc_id = isset($_POST['prc']) ? $_POST['prc'] : [];
+
+		$sql = "INSERT INTO tbl_prc (service_id, prc_id) VALUES (?, ?)";
+		if ($stmt = $conn->prepare($sql)) {
+			$stmt->bind_param("is", $id, $prc_id);
+			$stmt->execute();
+			$stmt->close();
+		}
+		
+		
 
 		$affiliates = isset($_POST['affiliate']) ? $_POST['affiliate'] : [];
 
