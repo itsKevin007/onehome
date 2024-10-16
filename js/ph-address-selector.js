@@ -170,25 +170,41 @@ var my_handlers = {
 
 };
 
-
 $(function() {
-    // events
-    $('#region').on('change', my_handlers.fill_provinces);
-    $('#province').on('change', my_handlers.fill_cities);
-    $('#city').on('change', my_handlers.fill_barangays);
-    $('#barangay').on('change', my_handlers.onchange_barangay);
+    // events for first address set
+    $('#region1').on('change', my_handlers.fill_provinces);
+    $('#province1').on('change', my_handlers.fill_cities);
+    $('#city1').on('change', my_handlers.fill_barangays);
+    $('#barangay1').on('change', my_handlers.onchange_barangay);
 
-    // load region
-    let dropdown = $('#region');
+    // events for second address set
+    $('#region2').on('change', my_handlers.fill_provinces);
+    $('#province2').on('change', my_handlers.fill_cities);
+    $('#city2').on('change', my_handlers.fill_barangays);
+    $('#barangay2').on('change', my_handlers.onchange_barangay);
+
+    // events for third address set
+    $('#region3').on('change', my_handlers.fill_provinces);
+    $('#province3').on('change', my_handlers.fill_cities);
+    $('#city3').on('change', my_handlers.fill_barangays);
+    $('#barangay3').on('change', my_handlers.onchange_barangay);
+
+    // load regions for the first address set
+    loadRegions('#region1');
+    loadRegions('#region2');
+    loadRegions('#region3');
+});
+
+// Function to load regions
+function loadRegions(selector) {
+    let dropdown = $(selector);
     dropdown.empty();
     dropdown.append('<option selected="true" disabled>Choose Region</option>');
-    dropdown.prop('selectedIndex', 0);
     const url = 'ph-json/region.json';
     // Populate dropdown with list of regions
     $.getJSON(url, function(data) {
         $.each(data, function(key, entry) {
             dropdown.append($('<option></option>').attr('value', entry.region_code).text(entry.region_name));
-        })
+        });
     });
-
-});
+}

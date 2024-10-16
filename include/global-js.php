@@ -30,8 +30,6 @@ if (!defined('WEB_ROOT')) {
 		
 		<script type="text/javascript" src="<?php echo WEB_ROOT; ?>js/flipdown/flipdown.js"></script>
 
-		<script src="<?php echo WEB_ROOT; ?>ph-address-selector.js"></script>
-
 		<script src="https://www.google.com/recaptcha/api.js?render=6LfaaVkqAAAAAOwKZTEsCxP8Lx6S6D9rPGLuwmPH"></script>
 
 
@@ -42,32 +40,64 @@ if (!defined('WEB_ROOT')) {
 		<script src='https://cdnjs.cloudflare.com/ajax/libs/flipclock/0.7.8/flipclock.js'></script><script  src="<?php echo WEB_ROOT; ?>js/script.js"></script>
 
 		<script>
-        // Get the modal
-        var modal = document.getElementById("myModal");
+    // First Modal
+    var modal = document.getElementById("myModal");
+    var btn = document.getElementById("openModalBtn");
+    var span = document.getElementsByClassName("close")[0];
 
-        // Get the button that opens the modal
-        var btn = document.getElementById("openModalBtn");
+    btn.onclick = function() {
+        modal.style.display = "block";
+    }
 
-        // Get the <span> element that closes the modal
-        var span = document.getElementsByClassName("close")[0];
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
 
-        // When the user clicks the button, open the modal 
-        btn.onclick = function() {
-            modal.style.display = "block";
-        }
-
-        // When the user clicks on <span> (x), close the modal
-        span.onclick = function() {
+    window.onclick = function(event) {
+        if (event.target == modal) {
             modal.style.display = "none";
         }
+    }
 
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
+    // Second Modal
+    var modal2 = document.getElementById("myModal2");
+    var btn2 = document.getElementById("openModalBtn2"); // Independent Service Provider button
+    var span2 = document.getElementsByClassName("close2")[0];
+
+    btn2.onclick = function() {
+        modal2.style.display = "block";
+    }
+
+    span2.onclick = function() {
+        modal2.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal2) {
+            modal2.style.display = "none";
         }
-    </script>
+    }
+
+    // Transition between first and second choices
+    var serviceProviderBtn = document.getElementById("serviceProviderBtn");
+    var firstChoices = document.getElementById("firstChoices");
+    var secondChoices = document.getElementById("secondChoices");
+    var goBackBtn = document.getElementById("goBackBtn");
+
+    // Show the second choices (Independent/Company)
+    serviceProviderBtn.onclick = function() {
+        firstChoices.style.display = "none";
+        secondChoices.style.display = "block";
+    }
+
+    // Go back to first choices
+    goBackBtn.onclick = function() {
+        secondChoices.style.display = "none";
+        firstChoices.style.display = "block";
+    }
+</script>
+
+
 
 		
 

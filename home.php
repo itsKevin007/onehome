@@ -335,36 +335,101 @@
                 </div><br><br>
 
                 <div class="pricing_items" style="text-align: center;">
-                    <!-- Subscriber pricing box -->
-                    <span id="openModalBtn">
-                        <div class="col-md-3 col-xs-6 sm-padding register" style="display: inline-block; float: none;">
-                            <div class="pricing_table mid_table wow flipInY" data-wow-delay="200ms" data-wow-duration="1000ms">
+    <!-- First Choices -->
+                    <div id="firstChoices" class="pricing_items" style="text-align: center;">
+                        <!-- Subscriber pricing box -->
+                        <span id="openModalBtn2">
+                            <div class="col-md-3 col-xs-6 sm-padding register" style="display: inline-block; float: none;">
+                                <div class="pricing_table mid_table wow flipInY" data-wow-delay="200ms" data-wow-duration="1000ms">
+                                    <div>
+                                        <br><br><br>
+                                        <h4>Subscriber</h4>
+                                        <br><br>
+                                    </div>
+                                </div>
+                            </div><!-- pricing 2 -->
+                        </span>
+                        <!-- Service Provider pricing box -->
+                        <div id="serviceProviderBtn" class="col-md-3 col-xs-6 sm-padding register" style="display: inline-block; float: none;">
+                            <div class="pricing_table mid_table wow flipInY" data-wow-delay="400ms" data-wow-duration="1000ms">
                                 <div>
                                     <br><br><br>
-                                    <h4>Subscriber</h4>
+                                    <h4>Service Provider</h4>
                                     <br><br>
-                                </div><!-- /.pricing_head -->
+                                </div>
                             </div>
-                        </div><!-- pricing 2 -->
-                    </span>
-                    <!-- Service Provider pricing box -->
-                    <div class="col-md-3 col-xs-6 sm-padding register" style="display: inline-block; float: none;">
-                        <div class="pricing_table mid_table wow flipInY" data-wow-delay="400ms" data-wow-duration="1000ms">
-                            <div>
-                                <br><br><br>
-                                <h4>Service Provider</h4>
-                                <br><br>
-                            </div><!-- /.pricing_head -->
+                        </div><!-- pricing 3 -->
+                    </div>
+
+                    <!-- Second Choices (with Independent and Company options) -->
+                    <div id="secondChoices" class="pricing_items" style="text-align: center; display: none;">
+                        <!-- Independent Service Provider pricing box -->
+                        <span id="openModalBtn">
+                            <div class="col-md-3 col-xs-6 sm-padding register" style="display: inline-block; float: none;">
+                                <div class="pricing_table mid_table wow flipInY" data-wow-delay="200ms" data-wow-duration="1000ms">
+                                    <div>
+                                        <br><br><br>
+                                        <h4>Independent Service Provider</h4>
+                                        <br><br>
+                                    </div>
+                                </div>
+                            </div><!-- pricing 2 -->
+                        </span>
+
+                        <!-- Service Provider (Company) pricing box -->
+                        <div id="openCompanyProvider" class="col-md-3 col-xs-6 sm-padding register" style="display: inline-block; float: none;">
+                            <div class="pricing_table mid_table wow flipInY" data-wow-delay="400ms" data-wow-duration="1000ms">
+                                <div>
+                                    <br><br><br>
+                                    <h4>Service Provider (Company)</h4>
+                                    <br><br>
+                                </div>
+                            </div>
+                        </div><!-- pricing 3 -->
+                        
+                        <!-- Go Back button -->
+                        <div style="margin-top: 20px;">
+                            <button id="goBackBtn" class="app_btn">Go Back</button>
                         </div>
-                    </div><!-- pricing 3 -->
+                    </div>
                 </div>
+
+            </div>
+
             </div>
 
 
     </div>
 </section><!-- /.hero_section -->
 
-<?php include 'modal-form.php' ?>
+<?php 
+    include 'modal-form.php';
+    include 'modal-form2.php';
+?>
+<script>
+    // Elements for initial and transformed displays
+    var firstChoices = document.getElementById("firstChoices");
+    var secondChoices = document.getElementById("secondChoices");
+
+    // Service Provider button from initial choices
+    var serviceProviderBtn = document.getElementById("serviceProviderBtn");
+
+    // Go Back button
+    var goBackBtn = document.getElementById("goBackBtn");
+
+    // Show the second choices (Independent/Company) when Service Provider is selected
+    serviceProviderBtn.onclick = function() {
+        firstChoices.style.display = "none";  // Hide the initial choices
+        secondChoices.style.display = "block";  // Show the transformed choices
+    };
+
+    // Go back to the first choices when "Go Back" is clicked
+    goBackBtn.onclick = function() {
+        secondChoices.style.display = "none";  // Hide the second choices
+        firstChoices.style.display = "block";  // Show the initial choices
+    };
+</script>
+
 
 <script>
     document.getElementById('myForms').addEventListener('submit', function (event) {

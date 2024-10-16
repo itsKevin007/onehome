@@ -11,7 +11,7 @@ if (!defined('WEB_ROOT')) {
 
 			<div class="top-menu ms-auto">
 						<ul class="navbar-nav align-items-center gap-1">
-							<li class="nav-item mobile-search-icon d-flex d-lg-none" data-bs-toggle="modal" data-bs-target="#SearchModal">
+							<li class="nav-item mobile-search-icon d-flex d-lg-none" data-bs-toggle="modal" data-bs-target="#SearchModal" style="visibility: hidden;">
 								<a class="nav-link" href="avascript:;"><i class='bx bx-search'></i>
 								</a>
 							</li>
@@ -26,7 +26,7 @@ if (!defined('WEB_ROOT')) {
 								</div>
 							</li>
 
-							<li class="nav-item dropdown dropdown-large">
+							<li class="nav-item dropdown dropdown-large" style="visibility: hidden;">
 								<a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative" href="#" data-bs-toggle="dropdown"><span class="alert-count">7</span>
 									<i class='bx bx-bell'></i>
 								</a>
