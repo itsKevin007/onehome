@@ -5,7 +5,7 @@
                 
                 <div class="modal-body" >
 
-                    <form class="needs-validation" novalidate method="post" action="process-client.php" enctype="multipart/form-data" name="form" id="form">			
+                    <form class="needs-validation" novalidate method="post" action="process-client.php" enctype="multipart/form-data" name="form" id="form1">			
                             
                             <div class="row mb-4">
                                 <div class="col-12 col-sm-4 mb-3">
@@ -19,19 +19,19 @@
                                 <div class="col-12 col-sm-3">
                                     <div class="form-group">
                                         <label class="form-label" for="firstname">First Name:</label>
-                                        <input type="text" id="firstname" name="firstname" placeholder="Enter Your First Name">
+                                        <input type="text" id="firstname" name="firstname" placeholder="Enter Your First Name" required>
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-3">
                                     <div class="form-group">
                                         <label for="middlename">Middle Name:</label>
-                                        <input type="text" id="middlename" name="middlename" placeholder="Enter Your Last Name">
+                                        <input type="text" id="middlename" name="middlename" placeholder="Enter Your Middle Name" >
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-3">
                                     <div class="form-group">
                                         <label for="lastname">Last Name:</label>
-                                        <input type="text" id="lastname" name="lastname" placeholder="Enter Your Last Name">
+                                        <input type="text" id="lastname" name="lastname" placeholder="Enter Your Last Name" required>
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-3">
@@ -135,11 +135,43 @@
                                 <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="connum">Contact Number:</label>
-                                        <input type="text" id="connum" name="connum" placeholder="Enter Your Contact Number">
+                                        <input type="text" id="connum" name="connum" placeholder="Enter Your Contact Number" required>
                                     </div>
                                 </div>
                             </div>
-							<label for="bankdetails" class="text-center">Complete Address:</label>                           
+							<label for="bankdetails" class="text-center">Complete Address:</label>    
+                            <!-- <div class="row mb-2">
+                                <div class="col-lg-3">
+                                    <div class="form-group">
+                                        <label for="region">Region:</label>
+
+                                        <input type="text" id="region_text" name="region_text" placeholder="Enter Your Region" required>
+                                        
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="form-group">
+                                        <label for="province">Province:</label>
+
+                                    
+                                        <input type="text" id="province_text" name="province_text" placeholder="Enter Your Province" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="form-group">
+                                        <label for="city">City/Municipality:</label>
+                                        
+                                        <input type="text" id="city_text" name="city_text" placeholder="Enter Your Province" required>
+                                        
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="form-group">
+                                        <label for="barangay">Barangay:</label>
+                                        <input type="text" id="barangay_text" name="barangay_text" placeholder="Enter Your Province" required>
+                                    </div>
+                                </div>
+                            </div>                           -->
                             <div class="row mb-2">
                                 <div class="col-lg-3">
                                     <div class="form-group">
@@ -390,6 +422,9 @@
                                 </div>
                             </div>
                             <hr>
+
+                            <!-- Hidden field for reCAPTCHA token -->
+                            <input type="hidden" name="recaptcha_response" id="recaptchaResponse1">
                             <div class="row">
                                 <div class="col-12 col-sm-12">
                                     <button type="submit" class="btn btn-lg btn-primary" style="width:100%;height:40px;background-color:#022C5C;border:1px #022C5C solid;color:white;border-radius:15px;">Submit Form</button>
@@ -402,7 +437,7 @@
     </div>
 
     <link rel="stylesheet" href="<?php echo WEB_ROOT;?>libraries/leaflet/leaflet.css" />
-	<script src="<?php echo WEB_ROOT;?>libraries/leaflet/leaflet.js"></script>
+<script src="<?php echo WEB_ROOT;?>libraries/leaflet/leaflet.js"></script>
 
 <script>
     // Get the modal
